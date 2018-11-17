@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <script language="JavaScript">
+   function mytime()
+   {var x=new Date();
+    h=x.getHours();
+    m=x.getMinutes();
+    s=x.getSeconds();
+    if(s<=9) s="0"+s;
+    if(m<=9) m="0"+m;
+    if(h<=9) h="0"+h;
+    time=h+":"+m+":"+s;
+    document.rclock.rtime.value=time;
+    setTimeout("mytime()",1000);}
+  </script>
+ <head>
+  <title>CUP BASILICATA</title>
+  <link rel="stylesheet" type="text/css" href="Stile.css">
+ </head>
+ <body background="Immagini/Sfondo.jpg" onload="mytime()">
+  <table border=0 align="center" width=70%>
+   <tr>
+    <td background="Immagini/SfondoInterno.jpg">
+    <center><a href='Index.php'><img src="Immagini/Titolo.gif" width="100%" border=0></a></center>
+	</td></tr>
+   <tr>
+    <td><div id='cssmenu'>
+         <ul>		  
+          <li class='active'><a href='Index.php'><span>&nbsp &nbsp Home &nbsp &nbsp </span></a></li>
+          <li class='has-sub'><a href='#'><span>&nbsp &nbsp Informazioni &nbsp &nbsp </span></a>
+          <ul>
+           <li><a href='Basilicata.php'><span>&nbsp &nbsp ASL Regionali &nbsp &nbsp </span></a></li>
+           <li><a href='Contatti.php'><span>&nbsp &nbsp Contatti &nbsp &nbsp </span></a></li>
+		   <li><a href='ChiSiamo.php'><span>&nbsp &nbsp Chi Siamo? &nbsp &nbsp </span></a></li>
+          </ul></li>
+          <li class='has-sub'><a href='#'><span>&nbsp &nbsp Login &nbsp  </span></a>
+		  <ul>
+		   <li><a href='LoginAmministratore.php'><span>&nbsp &nbsp Amministratore &nbsp &nbsp </span></a></li>
+           <li><a href='LoginPaziente.php'><span>&nbsp &nbsp Paziente &nbsp &nbsp </span></a></li>
+           <li><a href='LoginMedicoBase.php'><span>&nbsp &nbsp Medico di Base&nbsp &nbsp </span></a></li>
+		   <li><a href='LoginMedicoSpecialista.php'><span>&nbsp &nbsp Medico Specialista&nbsp &nbsp </span></a></li>
+		  </ul></li>
+		  <li class='has-sub'><a href='#'><span>&nbsp &nbsp Maturita' 2013 &nbsp  </span></a>
+		  <ul>
+		   <li><a href='rete e relazione/RELAZIONE AREA DI PROGETTO.pdf'><span>&nbsp &nbsp Relazione Area di Progetto &nbsp &nbsp </span></a></li>
+          </ul></li>
+		  <li class='has-end'>
+           <script language="JavaScript">
+            today = new Date()
+            document.write("<center><font size='2.5' color=white>&nbsp &nbsp ",today.getDate(),"/",today.getMonth()+1,"/",today.getFullYear(),"</center></font>");
+           </script>
+           <form name="rclock">
+            <table border="0"> &nbsp
+             <input type="text" name="rtime" size="9" class=sfondo_orologio style="text-align:center" readonly>
+            </table>
+           </form>
+          </li>
+        </div>
+	</td></tr>
+  </table> 
+ </body> 
+</html>

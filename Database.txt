@@ -1,0 +1,181 @@
+-- phpMyAdmin SQL Dump
+-- version 2.6.1
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Generato il: 04 Giu, 2013 at 11:38 PM
+-- Versione MySQL: 4.1.9
+-- Versione PHP: 4.3.10
+-- 
+-- Database: `cup`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Struttura della tabella `amministratori`
+-- 
+
+CREATE TABLE `amministratori` (
+  `CF` varchar(16) NOT NULL default '',
+  `EMAIL` varchar(30) NOT NULL default '',
+  `NOMEUTENTE` varchar(30) NOT NULL default '',
+  `PASSWORD` varchar(60) NOT NULL default '',
+  `NOME` varchar(20) NOT NULL default '',
+  `COGNOME` varchar(20) NOT NULL default '',
+  `SESSO` varchar(7) NOT NULL default '',
+  `DATADINASCITA` varchar(10) NOT NULL default '',
+  `LUOGODINASCITA` varchar(20) NOT NULL default '',
+  `RESIDENZA` varchar(20) NOT NULL default '',
+  `INDIRIZZO` varchar(30) NOT NULL default '',
+  `CAP` int(10) NOT NULL default '0',
+  PRIMARY KEY  (`CF`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Dump dei dati per la tabella `amministratori`
+-- 
+
+INSERT INTO `amministratori` VALUES ('ADMIN', 'ADMIN@ADMIN.ADMIN', 'admin', '21232f297a57a5a743894a0e4a801fc3', 'ADMIN', 'ADMIN', 'MASCHIO', '00/00/0000', 'ADMIN', 'ADMIN', 'ADMIN', 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Struttura della tabella `medicidibase`
+-- 
+
+CREATE TABLE `medicidibase` (
+  `IDMEDICOBASE` int(11) NOT NULL auto_increment,
+  `EMAIL` varchar(30) NOT NULL default '',
+  `NOMEUTENTE` varchar(30) NOT NULL default '',
+  `PASSWORD` varchar(60) NOT NULL default '',
+  `NOME` varchar(20) NOT NULL default '',
+  `COGNOME` varchar(20) NOT NULL default '',
+  `SESSO` varchar(7) NOT NULL default '',
+  `DATADINASCITA` varchar(10) NOT NULL default '',
+  `LUOGODINASCITA` varchar(20) NOT NULL default '',
+  `RESIDENZA` varchar(20) NOT NULL default '',
+  `INDIRIZZO` varchar(30) NOT NULL default '',
+  `CF` varchar(16) NOT NULL default '',
+  `CAP` int(10) NOT NULL default '0',
+  PRIMARY KEY  (`IDMEDICOBASE`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+
+-- 
+-- Dump dei dati per la tabella `medicidibase`
+-- 
+
+INSERT INTO `medicidibase` VALUES (16, 'MEDICODIBASE1@SANITÀ.IT', 'medicodibase1', 'a55723477bc4403b77333e905b43f968', 'MARIO', 'ROSSI', 'UOMO', '22-04-1969', 'MATERA', 'MATERA', 'VIA ITALIA', 'XXXXXXXXXXX', 75100);
+INSERT INTO `medicidibase` VALUES (17, 'MEDICODIBASE1@SANITÀ.IT', 'medicodibase2', '0d939fed8e0cbe0aadf67f714fbfab4a', 'MARIA', 'BIANCHI', 'DONNA', '08-12-1980', 'MATERA', 'POTENZA', 'VIA ROMA', 'XXXXXXXXXXX', 85100);
+
+-- --------------------------------------------------------
+
+-- 
+-- Struttura della tabella `medicispecialisti`
+-- 
+
+CREATE TABLE `medicispecialisti` (
+  `IDSPECIALISTA` int(11) NOT NULL auto_increment,
+  `EMAIL` varchar(30) NOT NULL default '',
+  `NOMEUTENTE` varchar(30) NOT NULL default '',
+  `PASSWORD` varchar(60) NOT NULL default '',
+  `NOME` varchar(20) NOT NULL default '',
+  `COGNOME` varchar(20) NOT NULL default '',
+  `SESSO` varchar(7) NOT NULL default '',
+  `DATADINASCITA` varchar(10) NOT NULL default '',
+  `LUOGODINASCITA` varchar(20) NOT NULL default '',
+  `RESIDENZA` varchar(20) NOT NULL default '',
+  `INDIRIZZO` varchar(30) NOT NULL default '',
+  `CF` varchar(16) NOT NULL default '',
+  `CAP` int(10) NOT NULL default '0',
+  `SPECIALIZZAZIONE` varchar(30) NOT NULL default '',
+  `ASL` varchar(10) NOT NULL default '',
+  PRIMARY KEY  (`IDSPECIALISTA`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+-- 
+-- Dump dei dati per la tabella `medicispecialisti`
+-- 
+
+INSERT INTO `medicispecialisti` VALUES (13, 'MEDICOSPECIALISTA1@SANITÀ.IT', 'medicospecialista1', 'd8ab7ef7788c7f5629f186d48c18d891', 'FRANCESCO', 'DE BELLIS', 'UOMO', '27-04-1946', 'MATERA', 'MATERA', 'VIA DANTE 3', 'XXXXXXXXXXXXX', 75100, 'CHIRURGICA', 'MATERA');
+INSERT INTO `medicispecialisti` VALUES (14, 'MEDICOSPECIALISTA2@SANITÀ.IT', 'medicospecialista2', '5a159ad839754dd0c0e85cbde99c0321', 'GIOVANNI', 'GALLI', 'UOMO', '04-03-1964', 'MELFI', 'POTENZA', 'VIA BARI 5', 'XXXXXXXXXXXX', 85100, 'DERMATOLOGICA', 'POTENZA');
+
+-- --------------------------------------------------------
+
+-- 
+-- Struttura della tabella `pazienti`
+-- 
+
+CREATE TABLE `pazienti` (
+  `IDPAZIENTE` int(11) NOT NULL auto_increment,
+  `EMAIL` varchar(30) NOT NULL default '',
+  `NOMEUTENTE` varchar(30) NOT NULL default '',
+  `PASSWORD` varchar(60) NOT NULL default '',
+  `NOME` varchar(20) NOT NULL default '',
+  `COGNOME` varchar(20) NOT NULL default '',
+  `SESSO` varchar(7) NOT NULL default '',
+  `DATADINASCITA` varchar(10) NOT NULL default '',
+  `LUOGODINASCITA` varchar(20) NOT NULL default '',
+  `RESIDENZA` varchar(20) NOT NULL default '',
+  `INDIRIZZO` varchar(30) NOT NULL default '',
+  `CF` varchar(16) NOT NULL default '',
+  `CAP` int(10) NOT NULL default '0',
+  `FKMEDBAS` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`IDPAZIENTE`),
+  KEY `FKMEDBAS` (`FKMEDBAS`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+-- 
+-- Dump dei dati per la tabella `pazienti`
+-- 
+
+INSERT INTO `pazienti` VALUES (1, 'PAZIENTE1@SANITÀ.IT', 'paziente1', '164df011f1ffb12a241d2fc52f6bb8ae', 'DAVIDE', 'TARDI', 'UOMO', '1945-01-22', 'MATERA', 'MATERA', 'VIA FOGGIA 25', 'XXXXXXXXXX', 75100, 16);
+INSERT INTO `pazienti` VALUES (4, 'PAZIENTE2@SANITÀ.IT', 'paziente2', '2c8b3fd0f209b451f8ab87d960f4c023', 'ANGELA', 'SARDO', 'DONNA', '1994-05-27', 'MATERA', 'MATERA', 'VIA COSENZA 4', 'XXXXXXXXX', 75100, 17);
+
+-- --------------------------------------------------------
+
+-- 
+-- Struttura della tabella `prenotazioni`
+-- 
+
+CREATE TABLE `prenotazioni` (
+  `IDPRENOTAZIONE` int(10) NOT NULL auto_increment,
+  `DATA` varchar(10) NOT NULL default '',
+  `SPECIALIZZAZIONE` varchar(30) NOT NULL default '',
+  `TIPOVISITA` varchar(30) NOT NULL default '',
+  `ASL` varchar(10) NOT NULL default '',
+  `ESITO` varchar(255) NOT NULL default 'VISITA NON ANCORA EFFETTUATA',
+  `FKPAZIENTE` int(11) NOT NULL default '0',
+  `FKSPECIALISTA` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`IDPRENOTAZIONE`),
+  KEY `FKPAZIENTE` (`FKPAZIENTE`),
+  KEY `FKSPECIALISTA` (`FKSPECIALISTA`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+
+-- 
+-- Dump dei dati per la tabella `prenotazioni`
+-- 
+
+INSERT INTO `prenotazioni` VALUES (9, '09-05-2013', 'CHIRURGICA', 'INTRAMOENIA', 'MATERA', 'Ottimi risultati, non si necessita di intervento chirurgico', 1, 13);
+INSERT INTO `prenotazioni` VALUES (10, '07-06-2013', 'CHIRURGICA', 'INTRAMOENIA', 'MATERA', 'VISITA NON ANCORA EFFETTUATA', 4, 13);
+INSERT INTO `prenotazioni` VALUES (11, '30-06-2013', 'DERMATOLOGICA', 'INTRAMOENIA', 'POTENZA', 'VISITA NON ANCORA EFFETTUATA', 4, 14);
+INSERT INTO `prenotazioni` VALUES (12, '14-07-2013', 'CHIRURGICA', 'INTRAMOENIA', 'MATERA', 'VISITA NON ANCORA EFFETTUATA', 1, 13);
+INSERT INTO `prenotazioni` VALUES (13, '10-05-2013', 'CHIRURGICA', 'INTRAMOENIA', 'MATERA', 'VISITA NON ANCORA EFFETTUATA', 4, 13);
+
+-- 
+-- Limiti per le tabelle scaricate
+-- 
+
+-- 
+-- Limiti per la tabella `pazienti`
+-- 
+ALTER TABLE `pazienti`
+  ADD CONSTRAINT `pazienti_ibfk_1` FOREIGN KEY (`FKMEDBAS`) REFERENCES `medicidibase` (`IDMEDICOBASE`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- 
+-- Limiti per la tabella `prenotazioni`
+-- 
+ALTER TABLE `prenotazioni`
+  ADD CONSTRAINT `prenotazioni_ibfk_1` FOREIGN KEY (`FKPAZIENTE`) REFERENCES `pazienti` (`IDPAZIENTE`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `prenotazioni_ibfk_2` FOREIGN KEY (`FKSPECIALISTA`) REFERENCES `medicispecialisti` (`IDSPECIALISTA`) ON DELETE CASCADE ON UPDATE CASCADE;
+        
